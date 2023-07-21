@@ -12,8 +12,8 @@ def generate_random_password(length):
 def save_to_database(sitename, username, password):
     connection = mysql.connector.connect(
         host="localhost",
-        user="root",
-        password="rootpassword",
+        user="your_username",
+        password="your_password",
         database="password_manager"
     )
     cursor = connection.cursor()
@@ -27,8 +27,8 @@ def save_to_database(sitename, username, password):
 def view_passwords(sitename):
     connection = mysql.connector.connect(
         host="localhost",
-        user="root",
-        password="rootpassword",
+        user="your_username",
+        password="your_password",
         database="password_manager"
     )
     cursor = connection.cursor()
@@ -39,7 +39,7 @@ def view_passwords(sitename):
     if not password:
         print(f"No password found for sitename: {sitename}")
     else:
-        pyperclip.copy(password[0])  # Copy the password to the clipboard
+        pyperclip.copy(password[0])  
         console.print(f"[green]Password for {sitename}: {password[0]}[/green]")
         console.print("[bold cyan]Copied to clipboard![/bold cyan]")
 
@@ -69,7 +69,7 @@ if __name__ == "__main__":
                     console.print("[bold red]Password length must be greater than zero.[/bold red]")
                 else:
                     password = generate_random_password(password_length)
-                    pyperclip.copy(password)  # Copy the password to the clipboard
+                    pyperclip.copy(password)  
                     console.print(f"[green]Generated password:[/green] {password}")
                     console.print("[bold yellow]Copied to clipboard![/bold yellow]")
             elif choice == "3":
